@@ -1,6 +1,6 @@
 {
   "name": "@yarnaimo/rain",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "repository": "github:yarnaimo/rain",
   "license": "MIT",
   "author": "yamaimo <yarnaimo@gmail.com>",
@@ -15,7 +15,6 @@
     "ts-node": "ts-node -r tsconfig-paths/register"
   },
   "dependencies": {
-    "@firebase/testing": "^0.3.2",
     "@types/jest": "^23.3.9",
     "@types/node": "^10.12.9",
     "@types/prettier": "^1.15.0",
@@ -29,6 +28,9 @@
     "tsconfig-paths": "^3.7.0",
     "tsconfig-paths-jest": "^0.0.1",
     "typescript": "^3.1.6"
+  },
+  "devDependencies": {
+    "@firebase/testing": "^0.3.2"
   },
   "lint-staged": {
     "./package.json": [
