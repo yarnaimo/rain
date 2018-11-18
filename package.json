@@ -15,6 +15,9 @@
     "ts-node": "ts-node -r tsconfig-paths/register"
   },
   "dependencies": {
+    "@types/jest": "^23.3.9",
+    "@types/node": "^10.12.9",
+    "@types/prettier": "^1.15.0",
     "husky": "^1.1.4",
     "jest": "^23.6.0",
     "lint-staged": "^8.0.5",
@@ -25,11 +28,6 @@
     "tsconfig-paths": "^3.7.0",
     "tsconfig-paths-jest": "^0.0.1",
     "typescript": "^3.1.6"
-  },
-  "devDependencies": {
-    "@types/jest": "^23.3.9",
-    "@types/node": "^10.12.9",
-    "@types/prettier": "^1.15.0"
   },
   "lint-staged": {
     "./package.json": [
