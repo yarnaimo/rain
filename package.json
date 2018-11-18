@@ -1,0 +1,44 @@
+{
+  "name": "@yarnaimo/rain",
+  "version": "0.0.0",
+  "repository": "github:yarnaimo/rain",
+  "license": "MIT",
+  "author": "yamaimo <yarnaimo@gmail.com>",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "precommit": "lint-staged",
+    "dev": "ts-node src/index.ts",
+    "prepare": "yarn run build",
+    "start": "NODE_ENV=production node dist/index.js",
+    "test": "NODE_ENV=test jest",
+    "ts-node": "ts-node -r tsconfig-paths/register"
+  },
+  "dependencies": {
+    "husky": "^1.1.4",
+    "jest": "^23.6.0",
+    "lint-staged": "^8.0.5",
+    "prettier": "^1.15.2",
+    "sort-package-json": "^1.16.0",
+    "ts-jest": "^23.10.4",
+    "ts-node": "^7.0.1",
+    "tsconfig-paths": "^3.7.0",
+    "tsconfig-paths-jest": "^0.0.1",
+    "typescript": "^3.1.6"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.9",
+    "@types/node": "^10.12.9",
+    "@types/prettier": "^1.15.0"
+  },
+  "lint-staged": {
+    "./package.json": [
+      "sort-package-json",
+      "git add"
+    ],
+    "*.{js,jsx,ts,tsx,css,scss,vue,gql,md}": [
+      "prettier --write --ignore-path .gitignore",
+      "git add"
+    ]
+  }
+}
