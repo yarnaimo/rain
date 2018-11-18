@@ -7,9 +7,9 @@ import {
 import { readFileSync } from 'fs'
 
 export class FirestoreTest {
-    private testNumber: number = 0
-    private projectName: string
-    private rules: string
+    protected testNumber: number = 0
+    protected projectName: string
+    protected rules: string
 
     constructor(
         projectName: string,
@@ -28,7 +28,7 @@ export class FirestoreTest {
         this.testNumber++
     }
 
-    private get projectId() {
+    protected get projectId() {
         return `${this.projectName}-${this.testNumber}`
     }
 
