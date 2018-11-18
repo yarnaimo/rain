@@ -15,6 +15,7 @@
     "ts-node": "ts-node -r tsconfig-paths/register"
   },
   "dependencies": {
+    "@firebase/testing": "^0.3.2",
     "@types/jest": "^23.3.9",
     "@types/node": "^10.12.9",
     "@types/prettier": "^1.15.0",
