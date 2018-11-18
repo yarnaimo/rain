@@ -8,8 +8,8 @@
   "scripts": {
     "build": "tsc",
     "precommit": "lint-staged",
-    "dev": "ts-node src/index.ts",
-    "prepare": "yarn run build",
+    "dev": "yarn ts-node src/index.ts",
+    "prepare": "yarn build",
     "start": "NODE_ENV=production node dist/index.js",
     "test": "NODE_ENV=test jest",
     "ts-node": "ts-node -r tsconfig-paths/register"
