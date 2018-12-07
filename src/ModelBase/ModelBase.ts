@@ -27,7 +27,7 @@ export class ModelBase<I> implements ITimeMetadata {
     protected _docData: PlainObject = {}
 
     get docData() {
-        return this._docData
+        return pickObjectFields(this.fieldNames, this._docData)
     }
 
     get changedDocData(): PlainObject {
