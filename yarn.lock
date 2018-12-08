@@ -59,6 +59,25 @@
   resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-1.15.2.tgz#91594ea7cb6f3b1f7ea69f32621246654c7cc231"
   integrity sha512-XIB0ZCaFZmWUHAa9dBqP5UKXXHwuukmVlP+XcyU94dui2k+l2lG+CHAbt2ffenHPUqoIs5Beh8Pdf2YEq/CZ7A==
 
+"@yarnaimo/tss@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@yarnaimo/tss/-/tss-0.0.1.tgz#9755244b33f8f8f0a62420f025c8602ff815b0fe"
+  integrity sha512-Bifca7HIw+X5/2juzbmMCUT61g/kp7R2qgRArv3db8W8fV8sSCkM9dzQuZimbD1kalYXEIn+b8J0IKLpLetegQ==
+  dependencies:
+    "@types/jest" "^23.3.9"
+    "@types/node" "^10.12.9"
+    "@types/prettier" "^1.15.0"
+    husky "^1.1.4"
+    jest "^23.6.0"
+    lint-staged "^8.0.5"
+    prettier "^1.15.2"
+    sort-package-json "^1.16.0"
+    ts-jest "^23.10.4"
+    ts-node "^7.0.1"
+    tsconfig-paths "^3.7.0"
+    tsconfig-paths-jest "^0.0.1"
+    typescript "^3.2.1"
+
 abab@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.0.tgz#aba0ab4c5eee2d4c79d3487d85450fb2376ebb0f"
