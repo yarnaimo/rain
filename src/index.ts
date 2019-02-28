@@ -1,4 +1,7 @@
-export { is, isNot } from './is'
+import * as t from 'io-ts'
+import * as tt from 'io-ts-types'
+export { tr } from './io-ts'
+export { is, isnot } from './is'
 export { FieldArray } from './ModelBase/FieldArray'
 export { FieldBase } from './ModelBase/FieldBase'
 export { FieldObject, FieldObjectProp } from './ModelBase/FieldObject'
@@ -8,3 +11,4 @@ export { Rarray } from './Rarray'
 export { Rstring } from './Rstring'
 export { Omit, PlainObject } from './types'
 export { pickObjectFields, ValidationErrors } from './utils'
+export { t, tt }

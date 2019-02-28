@@ -14,7 +14,7 @@ export const Rstring = {
     }) as Union,
 
     globalMatch: (str: string, pattern: RegExp) => {
-        const matches = [] as string[][]
+        const matches = [] as (string | undefined)[][]
         let m = [] as string[] | null
 
         while ((m = pattern.exec(str))) {

@@ -10,9 +10,11 @@ export const is = {
     function: <T>(v: T | Function): v is Function => typeof v === 'function',
 
     array: <T>(v: T | any[]): v is any[] => Array.isArray(v),
+
+    error: <T>(v: T | Error): v is Error => v instanceof Error,
 }
 
-export const isNot = {
+export const isnot = {
     nullish: <T>(v: T | null): v is T => v != null,
 
     string: <T>(v: T | string): v is T => typeof v !== 'string',
@@ -23,5 +25,5 @@ export const isNot = {
     object: <T>(v: T | object): v is T => typeof v !== 'object',
     function: <T>(v: T | Function): v is T => typeof v !== 'function',
 
-    array: <T>(v: T | any[]): v is T => !Array.isArray(v),
+    error: <T>(v: T | Error): v is T => !(v instanceof Error),
 }

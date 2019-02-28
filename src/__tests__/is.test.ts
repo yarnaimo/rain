@@ -1,13 +1,13 @@
 import { is } from '..'
-import { isNot } from '../is'
+import { isnot } from '../is'
 
 const expected = [true, false, false, true]
 
 const value = (fnName: keyof typeof is, a: any, b: any) => [
     (is as any)[fnName](a),
-    (isNot as any)[fnName](a),
+    (isnot as any)[fnName](a),
     (is as any)[fnName](b),
-    (isNot as any)[fnName](b),
+    (isnot as any)[fnName](b),
 ]
 
 test('nullish', () => {
@@ -43,5 +43,5 @@ test('function', () => {
 })
 
 test('array', () => {
-    expect(value('array', [], {})).toEqual(expected)
+    expect([is.array([]), is.array({})]).toEqual([true, false])
 })
