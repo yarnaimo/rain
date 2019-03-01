@@ -1,5 +1,6 @@
 import { ValidationError } from 'class-validator'
 import { PlainObject } from '.'
+import { is } from './is'
 
 export class ValidationErrors {
     errors: ValidationError[] = []
@@ -22,3 +23,5 @@ export const pickObjectFields = (fieldNames: Set<string>, from: PlainObject) => 
         {} as PlainObject
     )
 }
+
+export const asError = (v: any) => (is.error(v) ? v : new Error(v))
