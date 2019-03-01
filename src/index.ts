@@ -12,5 +12,5 @@ export { Field, ModelBase } from './ModelBase/ModelBase'
 export { Rarray } from './Rarray'
 export { Rstring } from './Rstring'
 export { Omit, PlainObject } from './types'
-export { pickObjectFields, ValidationErrors } from './utils'
+export { asError, pickObjectFields, ValidationErrors } from './utils'
 export { t, tt }

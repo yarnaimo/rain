@@ -1,5 +1,5 @@
 export const is = {
-    nullish: <T>(v: T | null): v is null => v == null,
+    nullish: <T>(v: T | null | undefined): v is null | undefined => v == null,
 
     string: <T>(v: T | string): v is string => typeof v === 'string',
     number: <T>(v: T | number): v is number => typeof v === 'number',
@@ -15,7 +15,7 @@ export const is = {
 }
 
 export const isnot = {
-    nullish: <T>(v: T | null): v is T => v != null,
+    nullish: <T>(v: T | null | undefined): v is T => v != null,
 
     string: <T>(v: T | string): v is T => typeof v !== 'string',
     number: <T>(v: T | number): v is T => typeof v !== 'number',
