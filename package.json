@@ -19,24 +19,26 @@
       "pre-commit": "lint-staged"
     }
   },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,css,scss,vue,gql,md}": [
+      "prettier --write --ignore-path .gitignore",
+      "git add"
+    ],
+    "./package.json": [
+      "sort-package-json",
+      "git add"
+    ]
+  },
   "dependencies": {
+    "@types/got": "^9.4.1",
+    "@types/luxon": "^1.11.1",
     "class-validator": "^0.9.1",
+    "got": "^9.6.0",
     "io-ts": "^1.8.2",
     "io-ts-types": "^0.4.2",
     "luxon": "^1.11.3"
   },
   "devDependencies": {
-    "@types/luxon": "^1.11.1",
-    "@yarnaimo/tss": "^0.0.1"
-  },
-  "lint-staged": {
-    "./package.json": [
-      "sort-package-json",
-      "git add"
-    ],
-    "*.{js,jsx,ts,tsx,css,scss,vue,gql,md}": [
-      "prettier --write --ignore-path .gitignore",
-      "git add"
-    ]
+    "@yarnaimo/tss": "^0.0.2"
   }
 }

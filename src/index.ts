@@ -1,5 +1,6 @@
 import * as t from 'io-ts'
 import * as tt from 'io-ts-types'
+export { got } from './got'
 export { tr } from './io-ts'
 export { is, isnot } from './is'
 export { FieldArray } from './ModelBase/FieldArray'
