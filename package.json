@@ -32,7 +32,6 @@
   "dependencies": {
     "@types/got": "^9.4.1",
     "@types/luxon": "^1.11.1",
-    "class-validator": "^0.9.1",
     "got": "^9.6.0",
     "io-ts": "^1.8.2",
     "io-ts-types": "^0.4.2",
