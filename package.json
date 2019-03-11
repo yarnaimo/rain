@@ -34,8 +34,8 @@
     "@types/luxon": "^1.11.1",
     "got": "^9.6.0",
     "io-ts": "^1.8.2",
-    "io-ts-types": "^0.4.2",
-    "luxon": "^1.11.3"
+    "io-ts-types": "^0.4.3",
+    "luxon": "^1.11.4"
   },
   "devDependencies": {
     "@yarnaimo/tss": "^0.0.2"
