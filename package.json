@@ -32,12 +32,15 @@
   "dependencies": {
     "@types/got": "^9.4.1",
     "@types/luxon": "^1.11.1",
+    "fp-ts": "^1.15.0",
     "got": "^9.6.0",
     "io-ts": "^1.8.2",
     "io-ts-types": "^0.4.2",
-    "luxon": "^1.11.3"
+    "luxon": "^1.11.3",
+    "monocle-ts": "^1.7.1",
+    "newtype-ts": "^0.2.4"
   },
   "devDependencies": {
-    "@yarnaimo/tss": "^0.0.2"
+    "@yarnaimo/tss": "latest"
   }
 }
