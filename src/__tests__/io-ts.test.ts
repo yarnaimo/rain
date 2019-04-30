@@ -1,32 +1,30 @@
+import dayjs from 'dayjs'
 import { right } from 'fp-ts/lib/Either'
 import { PathReporter } from 'io-ts/lib/PathReporter'
-import { DateTime } from 'luxon'
-import { LuxonDateTime } from '../io-ts/LuxonDateTime'
-import { LuxonDateTimeFromISOString } from '../io-ts/LuxonDateTimeFromISOString'
+import { tr } from '..'
 
 describe('Date', () => {
     describe('Date', () => {
-        it('should decode DateTime values', () => {
-            expect(LuxonDateTime.decode(DateTime.fromMillis(0))).toEqual(
-                right(DateTime.fromMillis(0))
-            )
+        it('should decode Dayjs values', () => {
+            expect(tr.dayjs.decode(dayjs(0))).toEqual(right(dayjs(0)))
         })
 
         it('should not decode non-DateTime values', () => {
-            expect(PathReporter.report(LuxonDateTime.decode(1))).toEqual([
-                'Invalid value 1 supplied to : LuxonDateTime',
+            expect(PathReporter.report(tr.dayjs.decode(1))).toEqual([
+                'Invalid value 1 supplied to : Dayjs',
             ])
         })
     })
 
     it('DateFromISOString', () => {
-        const T = LuxonDateTimeFromISOString
-        const d = DateTime.fromJSDate(new Date(1973, 10, 30))
-        const s = d.toISO()
-        expect(T.decode(s)).toEqual(right(d))
-        expect(T.decode(s).map(d => d.toMillis())).toEqual(right(d.toMillis()))
-        expect(PathReporter.report(T.decode('foo'))).toEqual([
-            'Invalid value "foo" supplied to : LuxonDateTimeFromISOString',
+        const d = dayjs(new Date(1973, 10, 30))
+        const s = d.toISOString()
+        expect(tr.dayjsFromString.decode(s)).toEqual(right(d))
+        expect(tr.dayjsFromString.decode(s).map(d => d.millisecond())).toEqual(
+            right(d.millisecond()),
+        )
+        expect(PathReporter.report(tr.dayjsFromString.decode('foo'))).toEqual([
+            'Invalid value "foo" supplied to : DayjsFromString',
         ])
     })
 })

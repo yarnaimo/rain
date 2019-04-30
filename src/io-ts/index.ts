@@ -1,12 +1,2 @@
-import { LuxonDateTime, LuxonDateTimeType } from './LuxonDateTime'
-import {
-    LuxonDateTimeFromISOString,
-    LuxonDateTimeFromISOStringType,
-} from './LuxonDateTimeFromISOString'
-
-export const tr = {
-    LuxonDateTime,
-    LuxonDateTimeType,
-    LuxonDateTimeFromISOString,
-    LuxonDateTimeFromISOStringType,
-}
+export { dayjs, DayjsType } from './Dayjs'
+export { dayjsFromString, DayjsFromStringType } from './DayjsFromString'

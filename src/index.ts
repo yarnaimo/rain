@@ -1,11 +1,11 @@
 import * as t from 'io-ts'
 import * as tt from 'io-ts-types'
+import * as tr from './io-ts'
 export { bufferFromUrlOrDataUrl } from './data'
 export { got } from './got'
-export { tr } from './io-ts'
 export { is, isnot } from './is'
 export { Rarray } from './Rarray'
 export { Rstring } from './Rstring'
 export { Omit, PlainObject } from './types'
 export { asError, pickObjectFields } from './utils'
-export { t, tt }
+export { t, tt, tr }
