@@ -1,5 +1,5 @@
+import { toError } from '.'
 import { got } from './got'
-import { asError } from './utils'
 
 export const isDataUrl = (v: string) => v.trim().startsWith('data:') && v.includes(',')
 
@@ -20,6 +20,6 @@ export async function bufferFromUrlOrDataUrl(url: string) {
 
         return { mimetype, buffer: body }
     } catch (error) {
-        return asError(error)
+        return toError(error)
     }
 }
