@@ -1,7 +1,7 @@
 import dayjs from 'dayjs'
 import * as t from 'io-ts'
 import * as tt from 'io-ts-types'
-import * as tr from './io-ts'
+import * as tr from './tr'
 export * from 'fp-ts/lib/Either'
 export { PathReporter } from 'io-ts/lib/PathReporter'
 export { ThrowReporter } from 'io-ts/lib/ThrowReporter'
