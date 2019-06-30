@@ -1,16 +1,15 @@
-import day, { Dayjs, isDayjs } from 'dayjs'
-import { t } from '..'
+import { dayjs, t } from '../external'
 
-export const DayjsFromString = new t.Type<Dayjs, string, t.mixed>(
+export const DayjsFromString = new t.Type<dayjs.Dayjs, string, t.mixed>(
     'DayjsFromString',
-    isDayjs,
+    dayjs.isDayjs,
     (u, c) => {
         const validation = t.string.validate(u, c)
         if (validation.isLeft()) {
             return validation as any
         } else {
             const s = validation.value
-            const d = day(s)
+            const d = dayjs(s)
             return !d.isValid() ? t.failure(s, c) : t.success(d)
         }
     },

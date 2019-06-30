@@ -1,4 +1,5 @@
-import { is, PlainObject } from '.'
+import { is } from './external'
+import { PlainObject } from './types'
 
 interface Union {
     (array: any[]): string | null
@@ -31,7 +32,10 @@ export const Rstring = {
             .join('\n')
     },
 
-    stringify: (data: PlainObject, replace: { [key: string]: (value: any) => any }) => {
+    stringify: (
+        data: PlainObject,
+        replace: { [key: string]: (value: any) => any },
+    ) => {
         const target = {} as PlainObject
         Object.keys(data)
             .sort()

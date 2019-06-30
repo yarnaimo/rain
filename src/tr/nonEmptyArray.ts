@@ -1,4 +1,4 @@
-import { t } from '..'
+import { t } from '../external'
 
 export const nonEmptyArray = <A, O>(
     codec: t.Type<A, O, unknown>,
@@ -11,7 +11,10 @@ export const nonEmptyArray = <A, O>(
     return new t.Type<[A, ...A[]], [O, ...O[]], unknown>(
         name,
         is,
-        (u, c) => arr.validate(u, c).chain(a => (is(a) ? t.success(a) : t.failure(u, c))),
+        (u, c) =>
+            arr
+                .validate(u, c)
+                .chain(a => (is(a) ? t.success(a) : t.failure(u, c))),
         a => a.map(codec.encode) as [O, ...O[]],
     )
 }

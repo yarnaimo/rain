@@ -1,7 +1,7 @@
-import { toError } from '.'
-import { got } from './got'
+import { got, toError } from './external'
 
-export const isDataUrl = (v: string) => v.trim().startsWith('data:') && v.includes(',')
+export const isDataUrl = (v: string) =>
+    v.trim().startsWith('data:') && v.includes(',')
 
 export async function bufferFromUrlOrDataUrl(url: string) {
     try {

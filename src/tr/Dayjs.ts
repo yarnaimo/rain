@@ -1,9 +1,8 @@
-import { Dayjs as DayjsClass, isDayjs } from 'dayjs'
-import { t } from '..'
+import { dayjs, t } from '../external'
 
-export const Dayjs = new t.Type<DayjsClass, DayjsClass, t.mixed>(
+export const Dayjs = new t.Type<dayjs.Dayjs, dayjs.Dayjs, t.mixed>(
     'Dayjs',
-    isDayjs,
-    (u, c) => (isDayjs(u) ? t.success(u) : t.failure(u, c)),
+    dayjs.isDayjs,
+    (u, c) => (dayjs.isDayjs(u) ? t.success(u) : t.failure(u, c)),
     t.identity,
 )

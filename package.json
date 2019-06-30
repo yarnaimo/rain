@@ -14,32 +14,18 @@
     "test": "NODE_ENV=test jest",
     "ts-node": "ts-node"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx,css,scss,vue,gql,md}": [
-      "prettier --write --ignore-path .gitignore",
-      "git add"
-    ],
-    "./package.json": [
-      "sort-package-json",
-      "git add"
-    ]
-  },
   "dependencies": {
-    "@types/got": "^9.4.4",
-    "dayjs": "^1.8.13",
-    "fp-ts": "^1.17.1",
+    "@sindresorhus/is": "^1.0.0",
+    "@types/got": "^9.6.0",
+    "dayjs": "^1.8.14",
+    "fp-ts": "^1.19.3",
     "got": "^9.6.0",
-    "io-ts": "^1.8.5",
+    "io-ts": "^1.10.2",
     "io-ts-types": "^0.4.7",
-    "monocle-ts": "^1.7.1",
-    "newtype-ts": "^0.2.4"
+    "monocle-ts": "^1.7.2",
+    "newtype-ts": "^0.3.1"
   },
   "devDependencies": {
-    "@yarnaimo/tss": "^0.1.5"
+    "@yarnaimo/tss": "^0.1.10"
   }
 }

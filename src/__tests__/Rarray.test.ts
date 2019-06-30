@@ -1,4 +1,4 @@
-import { Rarray } from '..'
+import { Rarray } from '../Rarray'
 
 test('first and last', () => {
     expect(Rarray.firstAndLast([0, 1, 2])).toEqual([0, 2])
