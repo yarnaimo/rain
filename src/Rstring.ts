@@ -1,18 +1,11 @@
-import { is } from './external'
+import is from '@sindresorhus/is'
 import { PlainObject } from './types'
 
-interface Union {
-    (array: any[]): string | null
-    (separator: string, array: any[]): string | null
-}
-
 export const Rstring = {
-    union: ((a1: string | any[], a2?: any[]) => {
-        const [separator, array] = is.array(a1) ? ['\n', a1] : [a1, a2!]
-
-        const filtered = array.filter(e => is.string(e)).map(e => e.trim())
+    joinOnlyStrings: (separator = '\n') => (array: unknown[]) => {
+        const filtered = array.filter(is.string).map(e => e.trim())
         return filtered.length ? filtered.join(separator) : null
-    }) as Union,
+    },
 
     globalMatch: (str: string, pattern: RegExp) => {
         const matches = [] as (string | undefined)[][]

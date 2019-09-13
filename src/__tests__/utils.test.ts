@@ -1,7 +1,7 @@
-import { bufferFromUrlOrDataUrl } from '../data'
+import { getBufferFromUrlOrDataUrl } from '../data'
 
-test('bufferFromUrlOrDataUrl', async () => {
-    expect(await bufferFromUrlOrDataUrl('data:image/png;base64,A')).toEqual({
+test('getBufferFromUrlOrDataUrl', async () => {
+    expect(await getBufferFromUrlOrDataUrl('data:image/png;base64,A')).toEqual({
         mimetype: 'image/png',
         buffer: expect.any(Buffer),
     })

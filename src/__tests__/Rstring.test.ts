@@ -1,19 +1,19 @@
 import { Rstring } from '../Rstring'
 
-test('union with separator', () => {
-    expect(Rstring.union('_', ['soko', null, ' pick', 'up', undefined])).toBe(
-        'soko_pick_up',
-    )
+test('joinOnlyStrings with separator', () => {
+    expect(
+        Rstring.joinOnlyStrings('_')(['soko', null, ' pick', 'up', undefined]),
+    ).toBe('soko_pick_up')
 })
 
-test('union', () => {
-    expect(Rstring.union(['soko', null, ' pick', 'up', undefined])).toBe(
-        'soko\npick\nup',
-    )
+test('joinOnlyStrings', () => {
+    expect(
+        Rstring.joinOnlyStrings()(['soko', null, ' pick', 'up', undefined]),
+    ).toBe('soko\npick\nup')
 })
 
-test('union returns null', () => {
-    expect(Rstring.union([null, undefined])).toBeNull()
+test('joinOnlyStrings returns null', () => {
+    expect(Rstring.joinOnlyStrings()([null, undefined])).toBeNull()
 })
 
 test('globalMatch', () => {

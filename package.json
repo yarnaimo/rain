@@ -16,16 +16,11 @@
   },
   "dependencies": {
     "@sindresorhus/is": "^1.0.0",
-    "@types/got": "^9.6.0",
-    "dayjs": "^1.8.14",
-    "fp-ts": "^1.19.3",
-    "got": "^9.6.0",
-    "io-ts": "^1.10.2",
-    "io-ts-types": "^0.4.7",
-    "monocle-ts": "^1.7.2",
-    "newtype-ts": "^0.3.1"
+    "@types/got": "^9.6.7",
+    "dayjs": "^1.8.16",
+    "got": "^9.6.0"
   },
   "devDependencies": {
-    "@yarnaimo/tss": "^0.1.10"
+    "@yarnaimo/tss": "^0.1.13"
   }
 }
