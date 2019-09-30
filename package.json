@@ -16,9 +16,8 @@
   },
   "dependencies": {
     "@sindresorhus/is": "^1.0.0",
-    "@types/got": "^9.6.7",
     "dayjs": "^1.8.16",
-    "got": "^9.6.0"
+    "got": "^10.0.0-alpha.2.2"
   },
   "devDependencies": {
     "@yarnaimo/tss": "^0.1.13"
