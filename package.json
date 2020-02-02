@@ -15,11 +15,14 @@
     "ts-node": "ts-node"
   },
   "dependencies": {
-    "@sindresorhus/is": "^1.0.0",
-    "dayjs": "^1.8.16",
-    "got": "^10.0.0-alpha.2.2"
+    "@sindresorhus/is": "^2.0.0",
+    "dayjs": "^1.8.19",
+    "got": "^10.4.0",
+    "p-map": "^3.0.0",
+    "p-reduce": "^2.1.0",
+    "remeda": "^0.0.14"
   },
   "devDependencies": {
-    "@yarnaimo/tss": "^0.1.13"
+    "@yarnaimo/tss": "^0.1.15"
   }
 }

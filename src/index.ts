@@ -1,4 +1,5 @@
 export * from './data'
+export * from './fp'
 export * from './Rarray'
 export * from './Rstring'
 export * from './types'
