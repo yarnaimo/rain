@@ -1,10 +1,14 @@
 import is from '@sindresorhus/is'
 import pmap from 'p-map'
 
-const pmapResolved: typeof pmap = async <Element, NewElement>(
+type OptionsWrapped = pmap.Options & {
+    onError?: (error: unknown, index: number) => void
+}
+
+const pmapWrapped = async <Element, NewElement>(
     input: Iterable<Element>,
     mapper: pmap.Mapper<Element, NewElement>,
-    options?: pmap.Options,
+    options?: OptionsWrapped,
 ) => {
     const wrappedMapper: pmap.Mapper<Element, NewElement | Error> = async (
         input,
@@ -13,7 +17,7 @@ const pmapResolved: typeof pmap = async <Element, NewElement>(
         try {
             return await mapper(input, i)
         } catch (error) {
-            console.error(error)
+            options?.onError?.(error, i)
             return new Error()
         }
     }
@@ -22,20 +26,20 @@ const pmapResolved: typeof pmap = async <Element, NewElement>(
     return result.filter((r): r is NewElement => !(r instanceof Error))
 }
 
-export interface $map {
+export interface $map<O extends pmap.Options> {
     <Element, NewElement>(
         input: Iterable<Element>,
         mapper: pmap.Mapper<Element, NewElement>,
-        options?: pmap.Options,
+        options?: O,
     ): Promise<NewElement[]>
 
     <Element, NewElement>(
         mapper: pmap.Mapper<Element, NewElement>,
-        options?: pmap.Options,
+        options?: O,
     ): (input: Iterable<Element>) => Promise<NewElement[]>
 }
 
-const createMap = (fn: typeof pmap): $map => (
+const createMap = <O extends pmap.Options>(fn: typeof pmap): $map<O> => (
     arg1: any,
     arg2: any,
     arg3?: any,
@@ -46,5 +50,5 @@ const createMap = (fn: typeof pmap): $map => (
     return fn(arg1, arg2, arg3) as any
 }
 
-export const $map = createMap(pmap)
-export const $mapResolved = createMap(pmapResolved)
+export const $map = createMap<pmap.Options>(pmap)
+export const $mapWrapped = createMap<OptionsWrapped>(pmapWrapped)

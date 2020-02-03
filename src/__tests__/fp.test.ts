@@ -1,8 +1,8 @@
 import { $ } from '../fp'
 import { Rarray } from '../Rarray'
 
-const arr = [1, 2]
-const arrStr = ['1', '2']
+const arr = [0, 1]
+const arrStr = ['0', '1']
 
 test('first and last', () => {
     expect(Rarray([0, 1, 2]).firstAndLast()).toEqual([0, 2])
@@ -20,29 +20,38 @@ const stringifyReject = async (n: number) => {
 }
 
 test('map - resolve', async () => {
-    const ps = [$.map(arr, stringifyResolve), $.map(stringifyResolve)(arr)]
+    const fs = [
+        () => $.map(arr, stringifyResolve),
+        () => $.map(stringifyResolve)(arr),
+    ]
 
-    for (const p of ps) {
-        await expect(p).resolves.toEqual(arrStr)
+    for (const f of fs) {
+        await expect(f()).resolves.toEqual(arrStr)
     }
 })
 
 test('map - reject', async () => {
-    const ps = [$.map(arr, stringifyReject), $.map(stringifyReject)(arr)]
+    const fs = [
+        () => $.map(arr, stringifyReject),
+        () => $.map(stringifyReject)(arr),
+    ]
 
-    for (const p of ps) {
-        await expect(p).rejects.toThrowError()
+    for (const f of fs) {
+        await expect(f()).rejects.toThrowError()
     }
 })
 
-test('map resolved', async () => {
-    const ps = [
-        $.mapResolved(arr, stringifyReject),
-        $.mapResolved(stringifyReject)(arr),
+test('mapWrapped', async () => {
+    const onError = jest.fn()
+
+    const fs = [
+        () => $.mapWrapped(arr, stringifyReject, { onError }),
+        () => $.mapWrapped(stringifyReject, { onError })(arr),
     ]
 
-    for (const p of ps) {
-        await expect(p).resolves.toEqual(['2'])
+    for (const f of fs) {
+        await expect(f()).resolves.toEqual(['0'])
+        expect(onError).lastCalledWith(expect.any(Error), 1)
     }
 })
 
@@ -52,7 +61,7 @@ test('p', async () => {
         $.map((n: number) => n * 3),
         $.map(stringifyResolve),
     )
-    expect(r1).toEqual(['3', '6'])
+    expect(r1).toEqual(['0', '3'])
 
     const p2 = $.p(
         arr,
@@ -64,16 +73,16 @@ test('p', async () => {
     const r3 = await $.p(
         arr,
         $.map((n: number) => n * 3),
-        $.mapResolved(stringifyReject),
+        $.mapWrapped(stringifyReject),
     )
-    expect(r3).toEqual(['6'])
+    expect(r3).toEqual(['0'])
 })
 
 test('opThrow', async () => {
     const r1 = await $.p(
         [null, undefined, ...arr],
-        $.mapResolved($.opThrow(n => n)),
+        $.mapWrapped($.opThrow(n => n)),
         $.map(stringifyResolve),
     )
-    expect(r1).toEqual(['1', '2'])
+    expect(r1).toEqual(['0', '1'])
 })
