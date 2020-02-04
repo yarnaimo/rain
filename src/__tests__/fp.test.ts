@@ -55,7 +55,12 @@ test('mapWrapped', async () => {
     }
 })
 
-test('p', async () => {
+test('$_', () => {
+    const r1 = $._(1, n => n * 3)
+    expect(r1).toBe(3)
+})
+
+test('$p', async () => {
     const r1 = await $.p(
         arr,
         $.map((n: number) => n * 3),

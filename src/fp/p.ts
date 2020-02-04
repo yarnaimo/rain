@@ -1,82 +1,101 @@
-type Fn<In, Out> = (input: In) => Out | PromiseLike<Out>
+type Fn<Pr extends boolean, In, Out> = (
+    input: In,
+) => Pr extends true ? Out | PromiseLike<Out> : Out
 
-export interface $p {
-    <A, B>(input0: A, op1: Fn<A, B>): Promise<B>
+export type MightPromise<Pr extends boolean, T> = Pr extends true
+    ? Promise<T>
+    : T
 
-    <A, B, C>(input0: A, op1: Fn<A, B>, op2: Fn<B, C>): Promise<C>
+export interface Pipe<Pr extends boolean> {
+    <A, B>(input0: A, op1: Fn<Pr, A, B>): MightPromise<Pr, B>
+
+    <A, B, C>(input0: A, op1: Fn<Pr, A, B>, op2: Fn<Pr, B, C>): MightPromise<
+        Pr,
+        C
+    >
 
     <A, B, C, D>(
         input0: A,
-        op1: Fn<A, B>,
-        op2: Fn<B, C>,
-        op3: Fn<C, D>,
-    ): Promise<D>
+        op1: Fn<Pr, A, B>,
+        op2: Fn<Pr, B, C>,
+        op3: Fn<Pr, C, D>,
+    ): MightPromise<Pr, D>
 
     <A, B, C, D, E>(
         input0: A,
-        op1: Fn<A, B>,
-        op2: Fn<B, C>,
-        op3: Fn<C, D>,
-        op4: Fn<D, E>,
-    ): Promise<E>
+        op1: Fn<Pr, A, B>,
+        op2: Fn<Pr, B, C>,
+        op3: Fn<Pr, C, D>,
+        op4: Fn<Pr, D, E>,
+    ): MightPromise<Pr, E>
 
     <A, B, C, D, E, F>(
         input0: A,
-        op1: Fn<A, B>,
-        op2: Fn<B, C>,
-        op3: Fn<C, D>,
-        op4: Fn<D, E>,
-        op5: Fn<E, F>,
-    ): Promise<F>
+        op1: Fn<Pr, A, B>,
+        op2: Fn<Pr, B, C>,
+        op3: Fn<Pr, C, D>,
+        op4: Fn<Pr, D, E>,
+        op5: Fn<Pr, E, F>,
+    ): MightPromise<Pr, F>
 
     <A, B, C, D, E, F, G>(
         input0: A,
-        op1: Fn<A, B>,
-        op2: Fn<B, C>,
-        op3: Fn<C, D>,
-        op4: Fn<D, E>,
-        op5: Fn<E, F>,
-        op6: Fn<F, G>,
-    ): Promise<G>
+        op1: Fn<Pr, A, B>,
+        op2: Fn<Pr, B, C>,
+        op3: Fn<Pr, C, D>,
+        op4: Fn<Pr, D, E>,
+        op5: Fn<Pr, E, F>,
+        op6: Fn<Pr, F, G>,
+    ): MightPromise<Pr, G>
 
     <A, B, C, D, E, F, G, H>(
         input0: A,
-        op1: Fn<A, B>,
-        op2: Fn<B, C>,
-        op3: Fn<C, D>,
-        op4: Fn<D, E>,
-        op5: Fn<E, F>,
-        op6: Fn<F, G>,
-        op7: Fn<G, H>,
-    ): Promise<H>
+        op1: Fn<Pr, A, B>,
+        op2: Fn<Pr, B, C>,
+        op3: Fn<Pr, C, D>,
+        op4: Fn<Pr, D, E>,
+        op5: Fn<Pr, E, F>,
+        op6: Fn<Pr, F, G>,
+        op7: Fn<Pr, G, H>,
+    ): MightPromise<Pr, H>
 
     <A, B, C, D, E, F, G, H, I>(
         input0: A,
-        op1: Fn<A, B>,
-        op2: Fn<B, C>,
-        op3: Fn<C, D>,
-        op4: Fn<D, E>,
-        op5: Fn<E, F>,
-        op6: Fn<F, G>,
-        op7: Fn<G, H>,
-        op8: Fn<H, I>,
-    ): Promise<I>
+        op1: Fn<Pr, A, B>,
+        op2: Fn<Pr, B, C>,
+        op3: Fn<Pr, C, D>,
+        op4: Fn<Pr, D, E>,
+        op5: Fn<Pr, E, F>,
+        op6: Fn<Pr, F, G>,
+        op7: Fn<Pr, G, H>,
+        op8: Fn<Pr, H, I>,
+    ): MightPromise<Pr, I>
 
     <A, B, C, D, E, F, G, H, I, J>(
         input0: A,
-        op1: Fn<A, B>,
-        op2: Fn<B, C>,
-        op3: Fn<C, D>,
-        op4: Fn<D, E>,
-        op5: Fn<E, F>,
-        op6: Fn<F, G>,
-        op7: Fn<G, H>,
-        op8: Fn<H, I>,
-        op9: Fn<I, J>,
-    ): Promise<J>
+        op1: Fn<Pr, A, B>,
+        op2: Fn<Pr, B, C>,
+        op3: Fn<Pr, C, D>,
+        op4: Fn<Pr, D, E>,
+        op5: Fn<Pr, E, F>,
+        op6: Fn<Pr, F, G>,
+        op7: Fn<Pr, G, H>,
+        op8: Fn<Pr, H, I>,
+        op9: Fn<Pr, I, J>,
+    ): MightPromise<Pr, J>
 }
 
-export const $p: $p = async (input: any, ...functions: any[]) => {
+export const $_: Pipe<false> = (input: any, ...functions: any[]) => {
+    let currentValue = input
+
+    for (const fn of functions) {
+        currentValue = fn(currentValue)
+    }
+
+    return currentValue
+}
+
+export const $p: Pipe<true> = async (input: any, ...functions: any[]) => {
     let currentValue = input
 
     for (const fn of functions) {
