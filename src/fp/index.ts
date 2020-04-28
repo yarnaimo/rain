@@ -1,7 +1,7 @@
 import is from '@sindresorhus/is'
 import preduce from 'p-reduce'
-import { $map, $mapWrapped } from './map'
-import { $p, $_ } from './p'
+import { map, mapWrapped } from './map'
+import { p, _ } from './pipe'
 
 export const opThrow = <I, O>(op: (input: I) => O) => (
     input: I | null | undefined,
@@ -12,11 +12,14 @@ export const opThrow = <I, O>(op: (input: I) => O) => (
     return op(input)
 }
 
+export { doo } from './doo'
+export { swltch } from './swltch'
+
 export const $ = {
-    _: $_,
-    p: $p,
-    map: $map,
-    mapWrapped: $mapWrapped,
+    _,
+    p,
+    map,
+    mapWrapped,
     reduce: preduce,
     opThrow,
 }

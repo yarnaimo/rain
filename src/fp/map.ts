@@ -50,5 +50,5 @@ const createMap = <O extends pmap.Options>(fn: typeof pmap): $map<O> => (
     return fn(arg1, arg2, arg3) as any
 }
 
-export const $map = createMap<pmap.Options>(pmap)
-export const $mapWrapped = createMap<OptionsWrapped>(pmapWrapped)
+export const map = createMap<pmap.Options>(pmap)
+export const mapWrapped = createMap<OptionsWrapped>(pmapWrapped)

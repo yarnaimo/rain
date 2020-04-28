@@ -85,7 +85,7 @@ export interface Pipe<Pr extends boolean> {
     ): MightPromise<Pr, J>
 }
 
-export const $_: Pipe<false> = (input: any, ...functions: any[]) => {
+export const _: Pipe<false> = (input: any, ...functions: any[]) => {
     let currentValue = input
 
     for (const fn of functions) {
@@ -95,7 +95,7 @@ export const $_: Pipe<false> = (input: any, ...functions: any[]) => {
     return currentValue
 }
 
-export const $p: Pipe<true> = async (input: any, ...functions: any[]) => {
+export const p: Pipe<true> = async (input: any, ...functions: any[]) => {
     let currentValue = input
 
     for (const fn of functions) {
